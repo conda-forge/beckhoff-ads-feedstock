@@ -33,6 +33,7 @@ outputs:
     build:
       files:
         - include
+        - bin
         - lib/*.so*
         - lib/pkgconfig
     tests:
