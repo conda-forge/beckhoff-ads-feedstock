@@ -2,7 +2,7 @@ context:
   name: beckhoff-ads
   version: 22
 
-package:
+recipe:
   name: ${{ name|lower }}
   version: ${{ version }}.0.0
 
@@ -21,18 +21,40 @@ build:
     meson setup build --prefix="$PREFIX" -Dlibdir="$PREFIX/lib" -Dwerror=false
     ninja -C build install
 
-requirements:
-  build:
-    - ${{ stdlib("c") }}
-    - ${{ compiler('cxx') }}
-    - meson
-    - ninja
+outputs:
+  - package:
+      name: ${{ name|lower }}
+    requirements:
+      build:
+        - ${{ stdlib("c") }}
+        - ${{ compiler('cxx') }}
+        - meson
+        - ninja
+    build:
+      files:
+        - include
+        - lib/*.so*
+        - lib/pkgconfig
+    tests:
+      - script:
+          - test -d "${PREFIX}/include/AdsLib"
+          - test -f "${PREFIX}/include/AdsLib/AdsLib.h"
+          - adstool --help
 
-tests:
-  - script:
-      - test -d "${PREFIX}/include/AdsLib"
-      - test -f "${PREFIX}/include/AdsLib/AdsLib.h"
-      - adstool --help
+  - package:
+      name: ${{ name|lower }}-static-libs
+    requirements:
+      build:
+        - ${{ stdlib("c") }}
+        - ${{ compiler('cxx') }}
+        - meson
+        - ninja
+    build:
+      files:
+        - lib/*.a
+    tests:
+      - script:
+          - test -f "${PREFIX}/lib/libAdsLib.a"
 
 about:
   homepage: https://github.com/Beckhoff/ADS
