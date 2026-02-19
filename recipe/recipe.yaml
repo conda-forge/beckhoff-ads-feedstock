@@ -3,7 +3,7 @@ context:
   version: 22
 
 recipe:
-  name: ${{ name|lower }}
+  name: ${{ name }}
   version: ${{ version }}.0.0
 
 source:
@@ -23,7 +23,7 @@ build:
 
 outputs:
   - package:
-      name: ${{ name|lower }}
+      name: ${{ name }}
     requirements:
       build:
         - ${{ stdlib("c") }}
@@ -43,7 +43,7 @@ outputs:
           - adstool --help
 
   - package:
-      name: ${{ name|lower }}-static-libs
+      name: ${{ name }}-static-libs
     requirements:
       build:
         - ${{ stdlib("c") }}
