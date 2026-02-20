@@ -61,7 +61,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-beckhoff--ads-green.svg)](https://anaconda.org/conda-forge/beckhoff-ads) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/beckhoff-ads.svg)](https://anaconda.org/conda-forge/beckhoff-ads) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/beckhoff-ads.svg)](https://anaconda.org/conda-forge/beckhoff-ads) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/beckhoff-ads.svg)](https://anaconda.org/conda-forge/beckhoff-ads) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-beckhoff--ads--static--libs-green.svg)](https://anaconda.org/conda-forge/beckhoff-ads-static-libs) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/beckhoff-ads-static-libs.svg)](https://anaconda.org/conda-forge/beckhoff-ads-static-libs) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/beckhoff-ads-static-libs.svg)](https://anaconda.org/conda-forge/beckhoff-ads-static-libs) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/beckhoff-ads-static-libs.svg)](https://anaconda.org/conda-forge/beckhoff-ads-static-libs) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-beckhoff--ads--static--libs-green.svg)](https://anaconda.org/conda-forge/beckhoff-ads-static) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/beckhoff-ads-static.svg)](https://anaconda.org/conda-forge/beckhoff-ads-static) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/beckhoff-ads-static.svg)](https://anaconda.org/conda-forge/beckhoff-ads-static) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/beckhoff-ads-static.svg)](https://anaconda.org/conda-forge/beckhoff-ads-static) |
 
 Installing beckhoff-ads
 =======================
@@ -73,16 +73,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `beckhoff-ads, beckhoff-ads-static-libs` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `beckhoff-ads, beckhoff-ads-static` can be installed with `conda`:
 
 ```
-conda install beckhoff-ads beckhoff-ads-static-libs
+conda install beckhoff-ads beckhoff-ads-static
 ```
 
 or with `mamba`:
 
 ```
-mamba install beckhoff-ads beckhoff-ads-static-libs
+mamba install beckhoff-ads beckhoff-ads-static
 ```
 
 It is possible to list all of the versions of `beckhoff-ads` available on your platform with `conda`:
