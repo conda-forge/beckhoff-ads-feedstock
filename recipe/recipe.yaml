@@ -43,7 +43,7 @@ outputs:
           - adstool --help
 
   - package:
-      name: ${{ name }}-static-libs
+      name: ${{ name }}-static
     requirements:
       build:
         - ${{ stdlib("c") }}
