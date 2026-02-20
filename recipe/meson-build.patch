@@ -1,5 +1,5 @@
---- meson.build 2025-10-13 17:03:23.623413707 +0200
-+++ meson.build 2025-10-13 17:03:50.738686971 +0200
+--- meson.build 2026-02-19 13:03:23.623413707 +0200
++++ meson.build 2026-02-19 13:03:50.738686971 +0200
 @@ -37,6 +37,56 @@
    'AdsLib/standalone/NotificationDispatcher.cpp',
  ])
@@ -57,7 +57,15 @@
  inc = include_directories([
    'AdsLib',
    'tools',
-@@ -62,6 +112,8 @@
+@@ -50,6 +100,7 @@
+ adslib = static_library('AdsLib',
+   [common_files, router_files],
+   include_directories: inc,
++  install: true,
+ )
+ 
+ adslib_dep = declare_dependency(
+@@ -62,6 +113,8 @@
    include_directories: inc,
    dependencies: libs,
    link_with: adslib,
@@ -66,7 +74,7 @@
  )
  
  adslibooitest = executable('AdsLibOOITest',
-@@ -69,6 +121,8 @@
+@@ -69,6 +122,8 @@
    include_directories: inc,
    dependencies: libs,
    link_with: adslib,
@@ -75,7 +83,7 @@
  )
  
  adstool = executable('adstool',
-@@ -76,6 +130,8 @@
+@@ -76,6 +131,8 @@
    include_directories: inc,
    dependencies: libs,
    link_with: adslib,
@@ -84,7 +92,7 @@
  )
  
  if get_option('tcadsdll_include') != ''
-@@ -86,6 +142,8 @@
+@@ -86,6 +143,8 @@
        get_option('tcadsdll_include'),
        inc,
      ],
@@ -93,7 +101,7 @@
    )
  
    tcadsdll_deps = [
-@@ -104,5 +162,7 @@
+@@ -104,5 +163,7 @@
        tcadsdll_deps
      ],
      link_with: tcadslib,
