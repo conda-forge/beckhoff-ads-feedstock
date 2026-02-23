@@ -57,42 +57,56 @@
  inc = include_directories([
    'AdsLib',
    'tools',
-@@ -50,6 +100,7 @@
- adslib = static_library('AdsLib',
+@@ -47,9 +97,17 @@
+   dependency('threads'),
+ ]
+ 
+-adslib = static_library('AdsLib',
++adslib_static = static_library('AdsLib',
++  [common_files, router_files],
++  include_directories: inc,
++  install: true,
++)
++
++adslib = shared_library('AdsLib',
    [common_files, router_files],
    include_directories: inc,
++  dependencies: libs,
 +  install: true,
  )
  
  adslib_dep = declare_dependency(
-@@ -62,6 +113,8 @@
+@@ -62,6 +120,9 @@
    include_directories: inc,
    dependencies: libs,
    link_with: adslib,
 +  install: true,
 +  install_dir: get_option('bindir'),
++  install_rpath: get_option('libdir'),
  )
  
  adslibooitest = executable('AdsLibOOITest',
-@@ -69,6 +122,8 @@
+@@ -69,6 +130,9 @@
    include_directories: inc,
    dependencies: libs,
    link_with: adslib,
 +  install: true,
 +  install_dir: get_option('bindir'),
++  install_rpath: get_option('libdir'),
  )
  
  adstool = executable('adstool',
-@@ -76,6 +131,8 @@
+@@ -76,6 +140,9 @@
    include_directories: inc,
    dependencies: libs,
    link_with: adslib,
 +  install: true,
 +  install_dir: get_option('bindir'),
++  install_rpath: get_option('libdir'),
  )
  
  if get_option('tcadsdll_include') != ''
-@@ -86,6 +143,8 @@
+@@ -86,6 +153,8 @@
        get_option('tcadsdll_include'),
        inc,
      ],
@@ -101,7 +115,7 @@
    )
  
    tcadsdll_deps = [
-@@ -104,5 +163,7 @@
+@@ -104,5 +173,7 @@
        tcadsdll_deps
      ],
      link_with: tcadslib,

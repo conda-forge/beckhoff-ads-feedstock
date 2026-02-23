@@ -14,7 +14,7 @@ source:
     - meson-build.patch
 
 build:
-  number: 2
+  number: 3
   skip:
     - win
   script: |
@@ -30,16 +30,29 @@ outputs:
         - ${{ compiler('cxx') }}
         - meson
         - ninja
+      run_exports:
+        - ${{ pin_subpackage(name, upper_bound='x.x.x') }}
     build:
       files:
         - include
         - bin
-        - lib/*.so*
+        - if: linux
+          then:
+            - lib/*.so*
+        - if: osx
+          then:
+            - lib/*.dylib*
         - lib/pkgconfig
     tests:
       - script:
           - test -d "${PREFIX}/include/AdsLib"
           - test -f "${PREFIX}/include/AdsLib/AdsLib.h"
+          - if: linux
+            then:
+              - test -f "${PREFIX}/lib/libAdsLib.so"
+          - if: osx
+            then:
+              - test -f "${PREFIX}/lib/libAdsLib.dylib"
           - adstool --help
 
   - package:
