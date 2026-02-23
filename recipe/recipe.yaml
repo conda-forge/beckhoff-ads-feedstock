@@ -30,6 +30,8 @@ outputs:
         - ${{ compiler('cxx') }}
         - meson
         - ninja
+      run_exports:
+        - ${{ pin_subpackage(name, upper_bound='x.x.x') }}
     build:
       files:
         - include
@@ -40,6 +42,7 @@ outputs:
       - script:
           - test -d "${PREFIX}/include/AdsLib"
           - test -f "${PREFIX}/include/AdsLib/AdsLib.h"
+          - test -f "${PREFIX}/lib/AdsLib.so"
           - adstool --help
 
   - package:
