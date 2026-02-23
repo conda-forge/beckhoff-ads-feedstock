@@ -14,7 +14,7 @@ source:
     - meson-build.patch
 
 build:
-  number: 2
+  number: 3
   skip:
     - win
   script: |
@@ -42,7 +42,7 @@ outputs:
       - script:
           - test -d "${PREFIX}/include/AdsLib"
           - test -f "${PREFIX}/include/AdsLib/AdsLib.h"
-          - test -f "${PREFIX}/lib/AdsLib.so"
+          - test -f "${PREFIX}/lib/libAdsLib.so"
           - adstool --help
 
   - package:
