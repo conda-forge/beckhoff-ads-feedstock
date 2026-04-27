@@ -1,20 +1,20 @@
 context:
   name: beckhoff-ads
-  version: 22
+  version: "113.0.33-1"
 
 recipe:
   name: ${{ name }}
   version: ${{ version }}.0.0
 
 source:
-  url: https://github.com/Beckhoff/ADS/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 7330e032a7add1f97df6759cc1610c06760ae928ecfa4531915a3595ab70aaaf
+  url: https://github.com/Beckhoff/ADS/archive/refs/tags/${{ version }}.tar.gz
+  sha256: 864f2440e9c5f5a79d6bf8b8cee80b5200196c2f9a19987c32ef7f33b46ea51a
   patches:
     # meson.build on v22 does not provide install directives - add them via patch. To be checked for newer versions.
     - meson-build.patch
 
 build:
-  number: 3
+  number: 0
   skip:
     - win
   script: |
