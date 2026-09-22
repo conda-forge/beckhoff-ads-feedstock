@@ -1,7 +1,7 @@
 context:
   name: beckhoff-ads
   tag: 113.0.34-1
-  version: "113.0.36-1"
+  version: ${{ tag | replace('-', '.') }}
 
 recipe:
   name: ${{ name }}
@@ -15,7 +15,7 @@ source:
     - headers-use-cplusplus-extern-c.patch
 
 build:
-  number: 0
+  number: 2
   skip:
     - win
   script: |
